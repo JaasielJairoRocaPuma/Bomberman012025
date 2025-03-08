@@ -37,18 +37,20 @@ void ABloque::BeginPlay()
 void ABloque::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
-	FVector NewLocation = GetActorLocation();
-	FRotator NewRotation = GetActorRotation();
-	float RunningTime = GetGameTimeSinceCreation();
-	
-	float DeltaHeight = FMath::FRandRange(-1.0f, 1.0f) * FloatSpeed;
-	NewLocation.Z += DeltaHeight;
+	if (bPuedeMoverse) {
+		FVector NewLocation = GetActorLocation();
+		FRotator NewRotation = GetActorRotation();
+		float RunningTime = GetGameTimeSinceCreation();
 
-	float DeltaRotation = FMath::FRandRange(-1.0f, 1.0f) * RotationSpeed;
-	NewRotation.Yaw += DeltaRotation;
+		float DeltaHeight = FMath::FRandRange(-1.0f, 1.0f) * FloatSpeed;
+		NewLocation.Z += DeltaHeight;
 
-	SetActorLocationAndRotation(NewLocation, NewRotation);
+		float DeltaRotation = FMath::FRandRange(-1.0f, 1.0f) * RotationSpeed;
+		NewRotation.Yaw += DeltaRotation;
+
+		SetActorLocationAndRotation(NewLocation, NewRotation);
+	}
+	
 	
 }
 

@@ -25,25 +25,26 @@ void ABombermanGameMode::BeginPlay()
 		float RandomX = FMath::RandRange(-1500.0f, 500.0f); // Rango deseado para la coordenada X
 		float RandomY = FMath::RandRange(-1500.0f, 500.0f); // Rango deseado para la coordenada Y
 
-		ABloque* bloque = GetWorld()->SpawnActor<ABloque>(
-			ABloque::StaticClass(),
-			FVector(RandomX, RandomY, 126.0f), FRotator(0.0f, 0.0f, 0.0f));
+		ABloque* bloque = GetWorld()->SpawnActor<ABloque>(ABloque::StaticClass(),FVector(RandomX, RandomY, 126.0f), FRotator(0.0f, 0.0f, 0.0f));
 		
 
         //ABloque* bloque = GetWorld()->SpawnActor<ABloque>(ABloque::StaticClass(), FVector(-1500.0f , -1050.0f + j * 250, 126.0f), FRotator(0.0f, 0.0f, 0.0f));
-		if (bloque->bPuedeMoverse)
-		{
+		if (numeroBloqueConMovimiento < 2) {
+			bloque->bPuedeMoverse = true;
 			numeroBloqueConMovimiento++;
 		}
-		if (numeroBloqueConMovimiento > 2) {
-			bloque->bPuedeMoverse = false;
-		}
 	}
+	numeroBloqueConMovimiento = 0;
+
 	for (int j = 0; j < 10; j++)
 	{
 		float RandomX = FMath::RandRange(-1500.0f, 500.0f); // Rango deseado para la coordenada X
-		float RandomY = FMath::RandRange(-1500.0f, 500.0f); // Rango deseado para la coordenada Y
+		float RandomY = FMath::RandRange(-1000.0f, 200.0f); // Rango deseado para la coordenada Y
 		AMuro* muro = GetWorld()->SpawnActor<AMuro>(AMuro::StaticClass(), FVector(RandomX, RandomY, 126.0f), FRotator(0.0f, 0.0f, 0.0f));
+		if (numeroBloqueConMovimiento < 2) {
+			muro->bPuedeMoverse = true;
+			numeroBloqueConMovimiento++;
+		}
 	}
 
 	

@@ -36,17 +36,20 @@ void AMuro::BeginPlay()
 void AMuro::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	FVector NewLocation = GetActorLocation();
-	FRotator NewRotation = GetActorRotation();
-	float RunningTime = GetGameTimeSinceCreation();
+	if (bPuedeMoverse) 
+	{
+		FVector NewLocation = GetActorLocation();
+		FRotator NewRotation = GetActorRotation();
+		float RunningTime = GetGameTimeSinceCreation();
 
-	float DeltaHeight = FMath::FRandRange(-1.0f, 1.0f) * FloatSpeed;
-	NewLocation.Z += DeltaHeight;
+		float DeltaHeight = FMath::FRandRange(-1.0f, 1.0f) * FloatSpeed;
+		NewLocation.Z += DeltaHeight;
 
-	float DeltaRotation = FMath::FRandRange(-1.0f, 1.0f) * RotationSpeed;
-	NewRotation.Yaw += DeltaRotation;
+		float DeltaRotation = FMath::FRandRange(-1.0f, 1.0f) * RotationSpeed;
+		NewRotation.Yaw += DeltaRotation;
 
-	SetActorLocationAndRotation(NewLocation, NewRotation);
+		SetActorLocationAndRotation(NewLocation, NewRotation);
+	}
 
 }
 
