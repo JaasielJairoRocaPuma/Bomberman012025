@@ -29,7 +29,7 @@ void ABombermanGameMode::BeginPlay()
 		
 
         //ABloque* bloque = GetWorld()->SpawnActor<ABloque>(ABloque::StaticClass(), FVector(-1500.0f , -1050.0f + j * 250, 126.0f), FRotator(0.0f, 0.0f, 0.0f));
-		if (numeroBloqueConMovimiento < 2) {
+		if (numeroBloqueConMovimiento < 1) {
 			bloque->bPuedeMoverse = true;
 			numeroBloqueConMovimiento++;
 		}
@@ -41,7 +41,7 @@ void ABombermanGameMode::BeginPlay()
 		float RandomX = FMath::RandRange(-1500.0f, 500.0f); // Rango deseado para la coordenada X
 		float RandomY = FMath::RandRange(-1000.0f, 200.0f); // Rango deseado para la coordenada Y
 		AMuro* muro = GetWorld()->SpawnActor<AMuro>(AMuro::StaticClass(), FVector(RandomX, RandomY, 126.0f), FRotator(0.0f, 0.0f, 0.0f));
-		if (numeroBloqueConMovimiento < 2) {
+		if (numeroBloqueConMovimiento < 3) {
 			muro->bPuedeMoverse = true;
 			numeroBloqueConMovimiento++;
 		}
