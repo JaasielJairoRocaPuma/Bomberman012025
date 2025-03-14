@@ -36,7 +36,7 @@ void AMuro::BeginPlay()
 void AMuro::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	if (bPuedeMoverse) 
+	if (mPuedeMoverse) 
 	{
 		FVector NewLocation = GetActorLocation();
 		FRotator NewRotation = GetActorRotation();

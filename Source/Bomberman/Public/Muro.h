@@ -28,6 +28,7 @@ public:
 	float FloatSpeed;
 	float RotationSpeed;
 
-	bool bPuedeMoverse=false;
+	bool mPuedeMoverse=false;
+	bool mPuedeSubir = false;
 
 };

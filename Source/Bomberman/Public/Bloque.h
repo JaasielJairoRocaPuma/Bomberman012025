@@ -33,5 +33,8 @@ public:
 	float RotationSpeed;
 
 	bool bPuedeMoverse=false;
+	bool bPuedeSubir = false;
+
+	int durabilidad=2;
 
 };

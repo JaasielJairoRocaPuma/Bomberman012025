@@ -14,6 +14,8 @@ ABloque::ABloque()
 
 	MallaBloque->SetupAttachment(RootComponent);
 
+	//MallaBloque->SetWorldScale3D(FVector(1.0f, 1.0f, 1.0f)); modificar la escala
+
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ObjetoMallaBloque(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Cube.Shape_Cube'"));
 
 	if (ObjetoMallaBloque.Succeeded()) {
@@ -42,10 +44,16 @@ void ABloque::Tick(float DeltaTime)
 		FRotator NewRotation = GetActorRotation();
 		float RunningTime = GetGameTimeSinceCreation();
 
-		float DeltaHeight = FMath::FRandRange(-1.0f, 1.0f) * FloatSpeed;
-		NewLocation.Z += DeltaHeight;
+		if(bPuedeSubir){
+			//float DeltaHeight = FMath::FRandRange(-1.0f, 2.0f) * FloatSpeed;
+            float DeltaHeight = FloatSpeed * DeltaTime;
+            NewLocation.Z += bPuedeSubir ? DeltaHeight : -DeltaHeight;
+			NewLocation.Z += DeltaHeight;
+		}
 
-		float DeltaRotation = FMath::FRandRange(-1.0f, 1.0f) * RotationSpeed;
+		
+
+		float DeltaRotation = FMath::FRandRange(-1.0f, 10.0f) * RotationSpeed;
 		NewRotation.Yaw += DeltaRotation;
 
 		SetActorLocationAndRotation(NewLocation, NewRotation);
